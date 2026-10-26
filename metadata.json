@@ -1,0 +1,6 @@
+{
+  "name": "ResumeTailor AI",
+  "description": "Tailor your resume for any job with AI precision. Upload PDF or DOCX, optimize keyword match, edit in real-time, and download ATS-ready PDFs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
