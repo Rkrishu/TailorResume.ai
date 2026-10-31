@@ -1,9 +1,5 @@
 </div>
-
-# Run and deploy your AI Studio app
-
 This contains everything you need to run your app locally.
-
 
 ## Run Locally
 
@@ -15,13 +11,6 @@ This contains everything you need to run your app locally.
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
 <<<<<<< HEAD
-   `npm run dev` -->
-# 📄 ResumeCraft.ai
-
-An AI-powered resume tailoring and optimization application that helps job seekers customize their resumes for specific job descriptions instantly using Google's Gemini API.
-
----
-
 ## ✨ Features
 
 * 🤖 **AI Resume Tailoring**: Automatically aligns your resume skills, experience, and summary with job requirements using Gemini AI.
@@ -47,11 +36,7 @@ Follow these steps to set up and run the project locally on your machine:
 ### 1. Prerequisites
 Make sure you have Node.js (v18+) installed on your machine and a **Gemini API Key** from [Google AI Studio](https://aistudio.google.com/).
 
-### 2. Clone the Repository
-``bash
-git clone (https://github.com/Rkrishu/Resumecraft_ai.git)
-
-### 3. Open URL
-App URL (https://resume-craft-ai-snowy.vercel.app/)
+### 2. Open URL
+App URL (https://tailor-resume-ai-psi.vercel.app/)
 =======
 
