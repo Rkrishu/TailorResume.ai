@@ -1,1 +1,204 @@
 @import "tailwindcss";
+
+
+/* Center-origin circular reveal for the Light / Dark theme toggle. */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
+    clip-path: circle(0 at var(--theme-reveal-x, 50%) var(--theme-reveal-y, 50%));
+    animation: theme-circle-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+@keyframes theme-circle-reveal {
+    to {
+        clip-path: circle(150vmax at var(--theme-reveal-x, 50%) var(--theme-reveal-y, 50%));
+    }
+}
+
+/* Dark theme contrast fixes for the existing Tailwind utility classes. */
+html.dark {
+    color-scheme: dark;
+}
+
+html.dark body {
+    background-color: #0b1120 !important;
+    color: #e2e8f0 !important;
+}
+
+/* Main surfaces and cards */
+html.dark .bg-white,
+html.dark .bg-slate-50,
+html.dark .bg-gray-50 {
+    background-color: #0f172a !important;
+}
+
+html.dark .bg-slate-100,
+html.dark .bg-slate-200,
+html.dark .bg-gray-100,
+html.dark .bg-gray-200 {
+    background-color: #1e293b !important;
+}
+
+html.dark .bg-slate-300,
+html.dark .bg-slate-400,
+html.dark .bg-gray-300,
+html.dark .bg-gray-400 {
+    background-color: #334155 !important;
+}
+
+/* Make ordinary text readable while preserving intentional gradient/white text. */
+html.dark [class*="text-slate-"]:not(.text-transparent),
+html.dark [class*="text-gray-"]:not(.text-transparent),
+html.dark [class*="text-zinc-"]:not(.text-transparent),
+html.dark [class*="text-neutral-"]:not(.text-transparent) {
+    color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-950,
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-slate-700,
+html.dark .text-gray-950,
+html.dark .text-gray-900,
+html.dark .text-gray-800,
+html.dark .text-gray-700 {
+    color: #f1f5f9 !important;
+}
+
+/* Secondary/helper text */
+html.dark .text-slate-600,
+html.dark .text-slate-500,
+html.dark .text-slate-400,
+html.dark .text-gray-600,
+html.dark .text-gray-500,
+html.dark .text-gray-400 {
+    color: #b6c3d5 !important;
+}
+
+/* Common blue labels and links */
+html.dark .text-blue-950,
+html.dark .text-blue-900,
+html.dark .text-blue-800,
+html.dark .text-blue-700,
+html.dark .text-blue-600,
+html.dark .text-indigo-900,
+html.dark .text-indigo-800,
+html.dark .text-indigo-700,
+html.dark .text-indigo-600 {
+    color: #bfdbfe !important;
+}
+
+/* Borders and dividers */
+html.dark [class*="border-slate-"],
+html.dark [class*="border-gray-"],
+html.dark [class*="divide-slate-"] {
+    border-color: #334155 !important;
+}
+
+/* Form fields, including placeholders */
+html.dark input,
+html.dark textarea,
+html.dark select {
+    background-color: #111c30;
+    color: #f1f5f9;
+    border-color: #475569;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+    color: #94a3b8 !important;
+    opacity: 1;
+}
+
+/* Keep warning/error panels readable */
+html.dark .bg-rose-50 {
+    background-color: #3f1723 !important;
+}
+
+html.dark .border-rose-200 {
+    border-color: #9f1239 !important;
+}
+
+html.dark .text-rose-900,
+html.dark .text-rose-800 {
+    color: #fecdd3 !important;
+}
+
+/* Muted blue information panels */
+html.dark .bg-blue-50 {
+    background-color: #172554 !important;
+}
+
+html.dark .border-blue-200 {
+    border-color: #1e40af !important;
+}
+
+html.dark .text-blue-700,
+html.dark .text-blue-800 {
+    color: #bfdbfe !important;
+}
+
+
+
+/* Final dark-mode surface overrides:
+   Several app panels use mid/light gray Tailwind backgrounds, so keep those
+   surfaces dark enough for their existing white text to remain readable. */
+html.dark [class*="bg-white"],
+html.dark [class*="bg-slate-50"],
+html.dark [class*="bg-slate-100"],
+html.dark [class*="bg-slate-200"],
+html.dark [class*="bg-slate-300"],
+html.dark [class*="bg-slate-400"],
+html.dark [class*="bg-slate-500"],
+html.dark [class*="bg-slate-600"],
+html.dark [class*="bg-gray-50"],
+html.dark [class*="bg-gray-100"],
+html.dark [class*="bg-gray-200"],
+html.dark [class*="bg-gray-300"],
+html.dark [class*="bg-gray-400"],
+html.dark [class*="bg-gray-500"],
+html.dark [class*="bg-gray-600"],
+html.dark [class*="bg-zinc-50"],
+html.dark [class*="bg-zinc-100"],
+html.dark [class*="bg-zinc-200"],
+html.dark [class*="bg-zinc-300"],
+html.dark [class*="bg-neutral-50"],
+html.dark [class*="bg-neutral-100"],
+html.dark [class*="bg-neutral-200"],
+html.dark [class*="bg-neutral-300"] {
+    background-color: #172235 !important;
+}
+
+/* Ensure the page header/footer and muted information panels follow dark mode. */
+html.dark header,
+html.dark footer {
+    background-color: #0f172a !important;
+    color: #e2e8f0 !important;
+}
+
+/* Existing white labels should remain white on the now-dark panels. */
+html.dark .text-white {
+    color: #f8fafc !important;
+}
+
+/* Keep disabled controls distinguishable without washing out their labels. */
+html.dark :disabled {
+    opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 0.01ms !important;
+    }
+}
